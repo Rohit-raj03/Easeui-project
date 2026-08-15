@@ -34,12 +34,12 @@ const Navbar = () => {
       <ul className="hidden md:flex items-center gap-6 text-gray-500">
         <li
           onClick={() => navigate("components")}
-          className="cursor-pointer hover:text-black"
+          className="cursor-pointer hover:text-(--text-hover)"
         >
           Components
         </li>
-        <li className="cursor-pointer hover:text-black">About</li>
-        <li className="cursor-pointer hover:text-black">Templates</li>
+        <li className="cursor-pointer hover:text-(--text-hover)">About</li>
+        <li className="cursor-pointer hover:text-(--text-hover)">Templates</li>
         {mode === "dark" && (
           <li
             className="cursor-pointer p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"

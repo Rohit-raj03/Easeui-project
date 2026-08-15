@@ -33,16 +33,16 @@ const ComponentLayout = ({}: Props) => {
           md:translate-x-0
         `}
       >
-        <h2 className="text-md font-bold mb-6">Components</h2>
+        <h2 className="text-md font-bold mb-6 text-(--text-color)">Components</h2>
         <ul className="flex flex-col gap-2">
           {components.map((item) => (
             <li
               onClick={() => navigate(item.toLowerCase())}
               key={item}
-              className={`cursor-pointer hover:text-black text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
+              className={`cursor-pointer font-normal hover:text-(--text-hover) text-md hover:translate-x-1 transition-all duration-200 ease-in-out ${
                 location.pathname === `/components/${item.toLowerCase()}`
-                  ? "text-black"
-                  : "text-gray-400"
+                  ? "text-(--text-color)"
+                  : "text-(--secondary-text)"
               }`}
             >
               {item}
