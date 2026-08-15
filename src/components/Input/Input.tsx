@@ -3,8 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/libs/utils";
 
 const inputVariants = cva(
-  "w-full rounded-md focus:outline-none shadow-sm transition-all duration-150 bg-white placeholder:text-gray-400",
-  // w-full bg-transparent border-b border-gray-500 pb-2 pt-6 focus:outline-none transition-all
+  "flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
   {
     variants: {
       size: {
@@ -13,80 +12,43 @@ const inputVariants = cva(
         lg: "px-5 py-3 text-lg",
       },
       tone: {
-        default:
-          "border-gray-300 focus:ring-2 focus:ring-blue-400 focus:border-blue-400",
-        error:
-          "border-red-400 focus:ring-2 focus:ring-red-400 focus:border-red-400",
-        success:
-          "border-green-400 focus:ring-2 focus:ring-green-400 focus:border-green-400",
-      },
-      disabled: {
-        true: "bg-gray-100 text-gray-400 cursor-not-allowed opacity-80",
+        default: "border-gray-300 focus:border-black",
+        error: "border-red-400 focus:border-red-600",
+        success: "border-green-400 focus:border-green-600",
       },
     },
     defaultVariants: {
       size: "md",
       tone: "default",
-      disabled: false,
     },
   }
 );
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     VariantProps<typeof inputVariants> {
   label?: string;
   hint?: string;
   error?: string;
-  id?: string;
   size?: "sm" | "md" | "lg";
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      label,
-      hint,
-      error,
-      className,
-      size = "md",
-      tone,
-      disabled,
-      id,
-      ...props
-    },
-    ref
-  ) => {
-    const inputId =
-      id ||
-      React.useId?.() ||
-      `input-${Math.random().toString(36).slice(2, 9)}`;
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, size, tone, disabled, label, hint, error, ...props }, ref) => {
     return (
-      <div className="flex flex-col gap-1 w-full">
-        {label && (
-          <label
-            htmlFor={inputId}
-            className="text-sm font-medium text-gray-700"
-          >
-            {label}
-          </label>
-        )}
+      <div className="w-full flex flex-col gap-1.5">
+        {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
         <input
-          id={inputId}
           ref={ref}
-          className={cn(inputVariants({ size, tone, disabled }), className)}
-          disabled={disabled}
+          disabled={Boolean(disabled)}
+          className={cn(inputVariants({ size, tone }), className)}
           {...props}
         />
-        {error ? (
-          <p className="text-sm text-red-500">{error}</p>
-        ) : hint ? (
-          <p className="text-sm text-gray-500">{hint}</p>
-        ) : null}
+        {error && <span className="text-xs text-red-500">{error}</span>}
+        {hint && !error && <span className="text-xs text-gray-500">{hint}</span>}
       </div>
     );
   }
 );
 
 Input.displayName = "Input";
-export { Input, inputVariants };
