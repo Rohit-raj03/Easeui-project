@@ -51,9 +51,9 @@ const InputPage = () => {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-4 space-y-12">
+    <div className="max-w-4xl mx-auto p-4 space-y-12 text-(--text-color)">
       <div className="space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Input</h1>
+        <h1 className="text-4xl font-bold tracking-tight ">Input</h1>
         <p className="text-gray-600 text-lg">
           Input component for user forms with standard styling and easy
           customization.
@@ -66,20 +66,20 @@ const InputPage = () => {
         <div className="space-y-2">
           <h3 className="text-lg font-medium">Normal</h3>
           <ComponentDemo code={variantsCode}>
-            <div className="flex flex-col gap-4">
-              <Input
+            <div className="flex flex-col gap-4 text-(--text-color)">
+              <Input className="text-(--text-color)"
                 label="Full Name"
                 placeholder="Enter your name"
                 size="sm"
               />
-              <Input
+              <Input className="text-(--text-color)"
                 label="Email"
                 type="email"
                 placeholder="Enter your email"
                 // variant="success"
                 size="md"
               />
-              <Input
+              <Input className="text-(--text-color)"
                 label="Email"
                 type="email"
                 placeholder="Enter your email"
@@ -91,12 +91,12 @@ const InputPage = () => {
         </div>
 
         <div className="space-y-2">
-          <h3 className="text-lg font-medium">Password Type</h3>
+          <h3 className="text-lg font-medium ">Password Type</h3>
           <ComponentDemo code={sizesCode}>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 ">
               <AnimatedInput label="Animated" placeholder="Focus me" />
               <FloatingLabelInput label="Floating" placeholder="" />
-              <InputWithIcon label="Search" icon={<Search />} />
+              <InputWithIcon className="bg-(--card-bg)" label="Search" icon={<Search />} />
               <PasswordInput label="Password" />
               <NumberInput label="Age" onChange={(v) => console.log(v)} />
             </div>

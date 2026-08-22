@@ -36,8 +36,8 @@ export interface InputProps
 export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, size, tone, disabled, label, hint, error, ...props }, ref) => {
     return (
-      <div className="w-full flex flex-col gap-1.5">
-        {label && <label className="text-sm font-medium text-gray-700">{label}</label>}
+      <div className="w-full flex flex-col gap-1.5 ">
+        {label && <label className="text-sm font-medium text-(--text-color) ">{label}</label>}
         <input
           ref={ref}
           disabled={Boolean(disabled)}

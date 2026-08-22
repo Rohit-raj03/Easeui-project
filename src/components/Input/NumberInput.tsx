@@ -24,7 +24,7 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberProps>(
     };
 
     return (
-      <div className="flex items-stretch gap-2">
+      <div className="flex items-stretch gap-2 ">
         <div className="flex-1">
           <Input {...(props as any)} ref={ref} type="number" />
         </div>
@@ -32,14 +32,14 @@ export const NumberInput = React.forwardRef<HTMLInputElement, NumberProps>(
           <button
             type="button"
             onClick={handleInc}
-            className="px-3 py-1 bg-gray-100 rounded"
+            className="px-3 py-1 bg-(--secondary-text) rounded"
           >
             +
           </button>
           <button
             type="button"
             onClick={handleDec}
-            className="px-3 py-1 bg-gray-100 rounded"
+            className="px-3 py-1 bg-(--secondary-text) rounded"
           >
             −
           </button>

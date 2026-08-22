@@ -69,8 +69,8 @@ export const InputWithIcon = React.forwardRef<HTMLInputElement, Props>(
           <div
             ref={iconRef}
             className={cn(
-              "absolute left-4 top-11 -translate-y-1/2 text-gray-400 transition-all duration-200 pointer-events-none",
-              animated && "will-change-transform will-change-color"
+              "absolute left-4 top-9 -translate-y-1/2 text-gray-400 transition-all duration-200 pointer-events-none",
+              animated && "will-change-transform will-change-color "
             )}
             style={{ color: iconColor }}
           >
