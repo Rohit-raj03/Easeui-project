@@ -9,7 +9,7 @@ interface PropsTableProps {
 
 const PropsTable = ({ data }: PropsTableProps) => {
   return (
-    <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+    <div className="overflow-hidden rounded-lg border border-gray-200 shadow-sm ">
       <table className="w-full">
         <thead className="">
           <tr>
@@ -23,9 +23,9 @@ const PropsTable = ({ data }: PropsTableProps) => {
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="divide-y divide-gray-200 text-(--secondary-text)">
           {data.map((row, i) => (
-            <tr key={i} className="hover:bg-gray-50 transition-colors">
+            <tr key={i} className="hover:bg-(--card-bg) transition-colors">
               <td className="px-4 py-3 text-sm font-mono text-blue-600">
                 {row.prop}
               </td>
